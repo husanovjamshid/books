@@ -4,6 +4,7 @@ let elSortName = document.querySelector(".sort-name");
 let elSortYear = document.querySelector(".sort-year");
 let elSortPage = document.querySelector(".sort-page");
 let elSortLang = document.querySelector(".sort-lang");
+let elBody = document.querySelector('body')
 
 function bookFunc(array, node) {
   node.innerHTML = "";
@@ -46,29 +47,57 @@ elInput.addEventListener("input", () => {
   bookFunc(searchArray, elList);
 });
 
-// Sort name
-books.forEach((item) => {
-  let newOption = document.createElement("option");
-  newOption.setAttribute("value", `${item.title}`);
-  newOption.textContent = item.title;
-  elSortName.appendChild(newOption);
-});
 
-// Change sort
-let nameArray = [];
-elSortName.addEventListener("change", () => {
-  nameArray = [];
-  if (elSortName.value != "all") {
+var sortArr = [];
+elSortName.addEventListener("change", function () {
+  sortArr = [];
+  if (elSortName.value != "All") {
     books.forEach((item) => {
-      if (item.title.includes(elSortName.value)) {
-        nameArray.push(item);
+      if (elSortName.value == "a_z") {
+        sortArr.push(item);
+        sortArr.sort(
+          (a, b) =>
+            a.title.toLowerCase().charCodeAt(0) -
+            b.title.toLowerCase().charCodeAt(0)
+        );
+      } else {
+        sortArr.push(item);
+        sortArr.sort(
+          (a, b) =>
+            b.title.toLowerCase().charCodeAt(0) -
+            a.title.toLowerCase().charCodeAt(0)
+        );
       }
     });
-    bookFunc(nameArray, elList);
+    bookFunc(sortArr, elList);
   } else {
-    bookFunc(books, elList);
+    pocFunc(books, elList);
   }
 });
+
+// // Sort name
+// books.forEach((item) => {
+//   let newOption = document.createElement("option");
+//   newOption.setAttribute("value", `${item.title}`);
+//   newOption.textContent = item.title;
+//   elSortName.appendChild(newOption);
+// });
+
+// // Change sort
+// let nameArray = [];
+// elSortName.addEventListener("change", () => {
+//   nameArray = [];
+//   if (elSortName.value != "all") {
+//     books.forEach((item) => {
+//       if (item.title.includes(elSortName.value)) {
+//         nameArray.push(item);
+//       }
+//     });
+//     bookFunc(nameArray, elList);
+//   } else {
+//     bookFunc(books, elList);
+//   }
+// });
 
 // Sort year
 let setYear = new Set();
@@ -175,7 +204,8 @@ function darkFunc() {
   if (window.localStorage.getItem("theme") == "dark") {
     elDarkBtn.classList.add("mode__active");
     elLightBtn.classList.remove("mode__active");
-    document.body.style.backgroundColor = "#333 !important";
+    elBody.classList.add('bodyDark')
+    // alert('sa')
     
   }
 }
