@@ -156,3 +156,47 @@ elSortLang.addEventListener("change", () => {
     bookFunc(books, elList);
   }
 });
+
+// DARK MODE
+var elDarkBtn = document.querySelector(".dark__mode");
+var elLightBtn = document.querySelector(".light__mode");
+
+let theme = false;
+
+elDarkBtn.addEventListener("click", function () {
+  theme = true;
+
+  let bg = "dark";
+  window.localStorage.setItem("theme", bg);
+  darkFunc();
+});
+
+function darkFunc() {
+  if (window.localStorage.getItem("theme") == "dark") {
+    elDarkBtn.classList.add("mode__active");
+    elLightBtn.classList.remove("mode__active");
+    document.body.style.backgroundColor = "#333 !important";
+    
+  }
+}
+
+darkFunc();
+
+elLightBtn.addEventListener("click", function () {
+  theme = false;
+
+  let bg = "light";
+  window.localStorage.setItem("theme", bg);
+  lightFunc();
+});
+
+function lightFunc() {
+  if (window.localStorage.getItem("theme") == "light") {
+    document.body.style.backgroundColor = "#fff";
+    elDarkBtn.classList.remove("mode__active");
+    elLightBtn.classList.add("mode__active");
+    
+  }
+}
+
+lightFunc();
