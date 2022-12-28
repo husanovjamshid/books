@@ -152,3 +152,17 @@ select option {
 .bodyDark {
     background-color: #333 !important;
 }
+
+.c-wrapper {
+    background-color: #333 !important;
+}
+
+
+
+.sidebar .nav .nav-item:hover {
+    background: inherit;
+}
+
+.userColor {
+    color: #fff !important;
+}

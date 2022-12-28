@@ -5,6 +5,7 @@ let elSortYear = document.querySelector(".sort-year");
 let elSortPage = document.querySelector(".sort-page");
 let elSortLang = document.querySelector(".sort-lang");
 let elBody = document.querySelector('body')
+let elContent = document.querySelector('.content-wrapper')
 
 function bookFunc(array, node) {
   node.innerHTML = "";
@@ -168,6 +169,12 @@ elSortLang.addEventListener("change", () => {
 // DARK MODE
 var elDarkBtn = document.querySelector(".dark__mode");
 var elLightBtn = document.querySelector(".light__mode");
+var elSidebar = document.querySelector(".sidebar");
+var elNavbar = document.querySelector(".navbar");
+var elNavbarBrand = document.querySelector(".navbar-brand-wrapper");
+var elbooks = document.querySelector(".books");
+var elUser = document.querySelector(".user-name");
+var elUser1 = document.querySelector(".user-name1");
 
 let theme = false;
 
@@ -184,8 +191,13 @@ function darkFunc() {
     elDarkBtn.classList.add("mode__active");
     elLightBtn.classList.remove("mode__active");
     elBody.classList.add('bodyDark')
-    // alert('sa')
-    
+    elContent.classList.add('c-wrapper')
+    elSidebar.classList.add('c-wrapper')
+    elNavbar.classList.add('c-wrapper')
+    elNavbarBrand.classList.add('c-wrapper')
+    elbooks.classList.add('c-wrapper')
+    elUser.classList.add('userColor')
+    elUser1.classList.add('userColor')
   }
 }
 
@@ -204,6 +216,14 @@ function lightFunc() {
     document.body.style.backgroundColor = "#fff";
     elDarkBtn.classList.remove("mode__active");
     elLightBtn.classList.add("mode__active");
+    elContent.classList.remove('c-wrapper')
+    elSidebar.classList.remove('c-wrapper')
+    elNavbar.classList.remove('c-wrapper')
+    elNavbarBrand.classList.remove('c-wrapper')
+    elbooks.classList.remove('c-wrapper')
+    elUser.classList.remove('userColor')
+    elUser1.classList.remove('userColor')
+
     
   }
 }
