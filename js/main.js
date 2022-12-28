@@ -71,33 +71,10 @@ elSortName.addEventListener("change", function () {
     });
     bookFunc(sortArr, elList);
   } else {
-    pocFunc(books, elList);
+    bookFunc(books, elList);
   }
 });
 
-// // Sort name
-// books.forEach((item) => {
-//   let newOption = document.createElement("option");
-//   newOption.setAttribute("value", `${item.title}`);
-//   newOption.textContent = item.title;
-//   elSortName.appendChild(newOption);
-// });
-
-// // Change sort
-// let nameArray = [];
-// elSortName.addEventListener("change", () => {
-//   nameArray = [];
-//   if (elSortName.value != "all") {
-//     books.forEach((item) => {
-//       if (item.title.includes(elSortName.value)) {
-//         nameArray.push(item);
-//       }
-//     });
-//     bookFunc(nameArray, elList);
-//   } else {
-//     bookFunc(books, elList);
-//   }
-// });
 
 // Sort year
 let setYear = new Set();
@@ -134,12 +111,6 @@ books.forEach((item) => {
   setPage.add(item.pages);
 });
 
-// setPage.forEach((item) => {
-//   let newOption = document.createElement("option");
-//   newOption.setAttribute("value", `${item}`);
-//   newOption.textContent = item;
-//   elSortPage.appendChild(newOption);
-// });
 
 // Change sort page
 let pageArray = [];
