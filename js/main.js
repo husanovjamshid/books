@@ -51,7 +51,7 @@ elInput.addEventListener("input", () => {
 var sortArr = [];
 elSortName.addEventListener("change", function () {
   sortArr = [];
-  if (elSortName.value != "All") {
+  if (elSortName.value != "all") {
     books.forEach((item) => {
       if (elSortName.value == "a_z") {
         sortArr.push(item);
