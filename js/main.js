@@ -134,12 +134,12 @@ books.forEach((item) => {
   setPage.add(item.pages);
 });
 
-setPage.forEach((item) => {
-  let newOption = document.createElement("option");
-  newOption.setAttribute("value", `${item}`);
-  newOption.textContent = item;
-  elSortPage.appendChild(newOption);
-});
+// setPage.forEach((item) => {
+//   let newOption = document.createElement("option");
+//   newOption.setAttribute("value", `${item}`);
+//   newOption.textContent = item;
+//   elSortPage.appendChild(newOption);
+// });
 
 // Change sort page
 let pageArray = [];
@@ -147,8 +147,12 @@ elSortPage.addEventListener("change", () => {
   pageArray = [];
   if (elSortPage.value != "all") {
     books.forEach((item) => {
-      if (item.pages == elSortPage.value) {
+      if (elSortPage.value == '50_to_2500') {
         pageArray.push(item);
+        pageArray.sort((a,b) => a.pages - b.pages)
+      }else {
+        pageArray.push(item);
+        pageArray.sort((a,b) => b.pages - a.pages)
       }
     });
     bookFunc(pageArray, elList);
