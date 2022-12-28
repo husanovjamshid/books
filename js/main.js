@@ -77,17 +77,17 @@ elSortName.addEventListener("change", function () {
 
 
 // Sort year
-let setYear = new Set();
-books.forEach((item) => {
-  setYear.add(item.year);
-});
+// let setYear = new Set();
+// books.forEach((item) => {
+//   setYear.add(item.year);
+// });
 
-setYear.forEach((item) => {
-  let newOption = document.createElement("option");
-  newOption.setAttribute("value", `${item > 0 ? item : item * -1}`);
-  newOption.textContent = item > 0 ? item : item * -1;
-  elSortYear.appendChild(newOption);
-});
+// setYear.forEach((item) => {
+//   let newOption = document.createElement("option");
+//   newOption.setAttribute("value", `${item > 0 ? item : item * -1}`);
+//   newOption.textContent = item > 0 ? item : item * -1;
+//   elSortYear.appendChild(newOption);
+// });
 
 // Change sort year
 let yearArray = [];
@@ -95,8 +95,12 @@ elSortYear.addEventListener("change", () => {
   yearArray = [];
   if (elSortYear.value != "all") {
     books.forEach((item) => {
-      if (item.year == elSortYear.value) {
+      if (elSortYear.value == '100_to_1960') {
         yearArray.push(item);
+        yearArray.sort((a,b) => a.year - b.year)
+      }else {
+        yearArray.push(item);
+        yearArray.sort((a,b) => b.year - a.year)
       }
     });
     bookFunc(yearArray, elList);
